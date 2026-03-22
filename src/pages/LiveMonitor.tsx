@@ -296,6 +296,7 @@ export default function LiveMonitor() {
             </CardHeader>
             <CardContent>
               <div className="feed-container aspect-video rounded-lg flex items-center justify-center border border-border overflow-hidden bg-black/40">
+              <div className="feed-container aspect-[4/3] w-full max-w-[640px] mx-auto rounded-lg flex items-center justify-center border border-border overflow-hidden bg-black/40">
                 {isWebcamActive ? (
                   <video
                     ref={videoRef}
@@ -303,13 +304,16 @@ export default function LiveMonitor() {
                     playsInline
                     muted
                     className="w-full h-full object-cover"
+                    className="h-full w-full object-contain"
                   />
                 ) : isConnected && streamUrl ? (
                   <div className="relative w-full h-full">
+                  <div className="relative h-full w-full flex items-center justify-center bg-black">
                     <img
                       src={streamUrl}
                       alt="Video Feed"
                       className="w-full h-full object-cover"
+                      className="h-full w-full object-contain"
                       onError={(e) => {
                         (e.target as HTMLImageElement).style.display = 'none';
                       }}
@@ -334,6 +338,7 @@ export default function LiveMonitor() {
 
           {/* Right Column: Live Attendance & Incidents */}
           <div className="space-y-6">
+
             
             {/* 1. Live Attendance List (New) */}
             <Card className="bg-card border-border">
